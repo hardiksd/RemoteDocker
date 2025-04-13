@@ -1,6 +1,6 @@
 # RemoteDocker
 
-RemoteDocker is an intermediary service that acts as a bridge between agentic AI systems and Docker Desktop. It exposes a secure HTTP API to perform common Docker operations, allowing AI systems to trigger builds, manage images, and control containers without direct access to the Docker daemon.
+RemoteDocker is an intermediary service that acts as a bridge between agentic AI systems like Openhands and Docker Desktop. It exposes a secure HTTP API to perform common Docker operations, allowing AI systems to trigger builds, manage images, and control containers without direct access to the Docker daemon.
 
 ## Features
 
