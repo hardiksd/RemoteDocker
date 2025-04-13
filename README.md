@@ -37,7 +37,7 @@ RemoteDocker is an intermediary service that acts as a bridge between agentic AI
    python app.py
    ```
 
-The server will start on `http://0.0.0.0:5000`.
+The server will start on `http://localhost:5000`.
 
 ## Authentication
 
@@ -146,6 +146,50 @@ http://localhost:5000/docs
 - `POST /compose/ps` - List containers in a Docker Compose application
 - `POST /compose/logs` - Get logs from a Docker Compose application
 - `POST /compose/config` - Validate and view a Compose file
+
+## Exposing the API with ngrok
+
+If you want to expose your RemoteDocker API over HTTPS to be accessible from anywhere, you can use [ngrok](https://ngrok.com/). This is particularly useful for allowing AI agents to interact with your Docker environment.
+
+### Setting up ngrok
+
+1. Sign up for a free ngrok account at [https://ngrok.com/](https://ngrok.com/)
+
+2. Download and install ngrok:
+   ```bash
+   # Linux/macOS
+   curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list && sudo apt update && sudo apt install ngrok
+
+   # Or with homebrew on macOS
+   brew install ngrok
+   ```
+
+3. Connect your account (replace YOUR_AUTHTOKEN with your ngrok auth token):
+   ```bash
+   ngrok config add-authtoken YOUR_AUTHTOKEN
+   ```
+
+4. Start ngrok to expose your RemoteDocker API:
+   ```bash
+   ngrok http 5000
+   ```
+
+5. ngrok will provide you with a public HTTPS URL (e.g., `https://abc123.ngrok.io`) that forwards to your local RemoteDocker server.
+
+### Using the ngrok URL
+
+Update your API requests to use the ngrok URL:
+
+```bash
+curl -X GET https://abc123.ngrok.io/version \
+  -H "Authorization: Bearer your_token_here"
+```
+
+### Security Considerations with ngrok
+
+- The ngrok URL is publicly accessible, so ensure your JWT authentication is properly configured
+- Consider using ngrok's IP restrictions feature for additional security
+- For production use, consider a paid ngrok plan with fixed subdomains and additional security features
 
 ## Security Considerations
 
