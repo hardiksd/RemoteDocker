@@ -77,7 +77,6 @@ http://localhost:5000/docs
 - `GET /version` - Docker engine version information
 - `GET /info` - Detailed Docker system information
 - `GET /system/df` - Docker disk usage information
-- `POST /system/prune` - Clean up unused Docker resources
 - `GET /system/events` - Get real-time events from Docker daemon
 
 #### Container Management

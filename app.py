@@ -316,30 +316,7 @@ async def system_disk_usage(_: str = Depends(get_current_user)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.post("/system/prune", tags=["Docker Info"])
-async def system_prune(
-    volumes: bool = False,
-    all_images: bool = False,
-    _: str = Depends(get_current_user)
-):
-    """
-    Remove unused data from the Docker system.
-    
-    - **volumes**: Remove unused volumes (default: False)
-    - **all_images**: Remove all unused images, not just dangling ones (default: False)
-    """
-    try:
-        prune_result = docker_client.api.prune_system(volumes=volumes, all=all_images)
-        return {
-            "message": "System pruned",
-            "containers_deleted": prune_result.get("ContainersDeleted", []),
-            "images_deleted": prune_result.get("ImagesDeleted", []),
-            "networks_deleted": prune_result.get("NetworksDeleted", []),
-            "volumes_deleted": prune_result.get("VolumesDeleted", []),
-            "space_reclaimed": prune_result.get("SpaceReclaimed", 0)
-        }
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.get("/system/events", tags=["Docker Info"])
 async def system_events(
