@@ -13,7 +13,7 @@ import sys
 # JWT Configuration - MUST match the configuration in app.py
 SECRET_KEY = "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7"  # Change this in production!
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+ACCESS_TOKEN_EXPIRE_MINUTES = 43200  # 30 days (30 * 24 * 60)
 
 def create_access_token(username: str, expires_delta: timedelta = None):
     """
@@ -40,7 +40,7 @@ def main():
     parser.add_argument("--username", "-u", type=str, default="api_user", 
                         help="Username to include in the token (default: api_user)")
     parser.add_argument("--expires", "-e", type=int, default=ACCESS_TOKEN_EXPIRE_MINUTES,
-                        help=f"Token expiration time in minutes (default: {ACCESS_TOKEN_EXPIRE_MINUTES})")
+                        help=f"Token expiration time in minutes (default: {ACCESS_TOKEN_EXPIRE_MINUTES}, which is 30 days)")
     
     args = parser.parse_args()
     

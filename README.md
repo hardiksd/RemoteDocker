@@ -48,10 +48,10 @@ All API endpoints are protected with JWT authentication. You need to include a v
 Use the provided token generation script:
 
 ```bash
-python generate_token.py --username your_username --expires 60
+python generate_token.py --username your_username --expires 10080
 ```
 
-This will generate a token valid for 60 minutes.
+This will generate a token valid for 7 days. By default, tokens are valid for 30 days.
 
 ### Using the Token
 
