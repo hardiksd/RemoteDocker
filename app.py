@@ -1,7 +1,8 @@
 from fastapi import FastAPI, Depends, HTTPException, status, File, UploadFile, Form, Request, BackgroundTasks
 from fastapi.security import OAuth2PasswordBearer
 from fastapi.responses import JSONResponse, StreamingResponse
-from jose import JWTError, jwt
+import jwt
+from jwt.exceptions import PyJWTError
 from typing import Optional, List, Dict, Any, Union, Generator
 import docker
 import uuid
@@ -95,7 +96,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
         if username is None:
             raise credentials_exception
         return username
-    except JWTError:
+    except PyJWTError:
         raise credentials_exception
 
 # Helper function for build process

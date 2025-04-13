@@ -29,7 +29,7 @@ RemoteDocker is an intermediary service that acts as a bridge between agentic AI
 
 2. Install dependencies:
    ```bash
-   pip install fastapi uvicorn python-jose[cryptography] python-multipart docker
+   pip install fastapi uvicorn pyjwt python-multipart docker
    ```
 
 3. Run the server:

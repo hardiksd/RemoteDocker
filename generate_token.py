@@ -7,7 +7,7 @@ This script generates a JWT token that can be used to authenticate with the Remo
 
 import argparse
 from datetime import datetime, timedelta
-from jose import jwt
+import jwt
 import sys
 
 # JWT Configuration - MUST match the configuration in app.py
