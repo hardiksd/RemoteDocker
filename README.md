@@ -202,3 +202,51 @@ curl -X GET https://abc123.ngrok.io/version \
   - Rate limiting
   - IP whitelisting
   - More granular permissions
+
+## Contributing
+
+We welcome contributions to RemoteDocker! Here are some guidelines to help you get started:
+
+### Getting Started
+
+1. **Fork the repository** on GitHub
+2. **Clone your fork** locally:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/RemoteDocker.git
+   cd RemoteDocker
+   ```
+3. **Create a new branch** for your feature or bugfix:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+### Development Guidelines
+
+- **Code Style**: Follow PEP 8 guidelines for Python code
+- **Documentation**: Add docstrings to new functions and update the README if necessary
+- **Testing**: Add tests for new features and ensure all tests pass before submitting a pull request
+- **Commit Messages**: Write clear, concise commit messages that explain your changes
+
+### Submitting Changes
+
+1. **Push your changes** to your fork:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+2. **Create a Pull Request** from your fork to the main repository
+3. **Describe your changes** in the pull request description
+4. **Reference any related issues** in your pull request description
+
+### Feature Requests and Bug Reports
+
+- Use the GitHub Issues section to report bugs or request features
+- Provide as much detail as possible when reporting bugs
+- For feature requests, explain the use case and benefits
+
+### Code of Conduct
+
+- Be respectful and inclusive in your interactions
+- Provide constructive feedback
+- Help create a positive community around the project
+
+Thank you for contributing to RemoteDocker!
