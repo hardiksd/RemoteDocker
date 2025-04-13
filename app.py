@@ -1121,6 +1121,26 @@ async def list_networks(_: str = Depends(get_current_user)):
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/networks/{network_id}", tags=["Networks"])
+async def get_network(network_id: str, _: str = Depends(get_current_user)):
+    """
+    Get basic information about a Docker network.
+    """
+    try:
+        network = docker_client.networks.get(network_id)
+        return {
+            "id": network.id,
+            "name": network.name,
+            "driver": network.attrs.get("Driver", ""),
+            "scope": network.attrs.get("Scope", ""),
+            "created": network.attrs.get("Created", ""),
+            "internal": network.attrs.get("Internal", False),
+            "attachable": network.attrs.get("Attachable", False),
+            "ingress": network.attrs.get("Ingress", False)
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/networks/{network_id}/inspect", tags=["Networks"])
 async def inspect_network(network_id: str, _: str = Depends(get_current_user)):
     """
     Inspect a Docker network with full details.
